@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using aspnetcoreapp.Models;
 
+namespace aspnetcoreapp.Data 
+{
     public class RazorPagesCityContext : DbContext
     {
         public RazorPagesCityContext (DbContextOptions<RazorPagesCityContext> options)
@@ -14,3 +16,4 @@ using aspnetcoreapp.Models;
 
         public DbSet<aspnetcoreapp.Models.City> City { get; set; } = default!;
     }
+}

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using aspnetcoreapp.Models;
+using aspnetcoreapp.Data;
 
 namespace aspnetcoreapp.Pages_Cities
 {
@@ -18,7 +19,7 @@ namespace aspnetcoreapp.Pages_Cities
             _context = context;
         }
 
-        public IList<City> City { get;set; } = default!;
+        public IList<City> City { get; set; } = default!;
 
         public async Task OnGetAsync()
         {

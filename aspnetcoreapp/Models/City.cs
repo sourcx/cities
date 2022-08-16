@@ -9,6 +9,7 @@ namespace aspnetcoreapp.Models
         public string Name { get; set; } = string.Empty;
 
         [DataType(DataType.Date)]
+        [Display(Name = "Publish date")]
         public DateTime PublishDate { get; set; }
 
         public string Json { get; set; } = string.Empty;

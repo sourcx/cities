@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using aspnetcoreapp.Models;
+using aspnetcoreapp.Data;
 
 namespace aspnetcoreapp.Pages_Cities
 {
@@ -35,6 +36,7 @@ namespace aspnetcoreapp.Pages_Cities
                 return NotFound();
             }
             City = city;
+            
             return Page();
         }
 
