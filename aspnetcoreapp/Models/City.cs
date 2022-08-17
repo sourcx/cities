@@ -13,5 +13,7 @@ namespace aspnetcoreapp.Models
         public DateTime PublishDate { get; set; }
 
         public string Json { get; set; } = string.Empty;
+
+        public string Country { get; set; } = string.Empty;
     }
 }

@@ -25,6 +25,7 @@ namespace aspnetcoreapp.Models
                 {
                     Name = "Wageningen",
                     PublishDate = DateTime.Parse("1989-2-12"),
+                    Country = "Netherlands",
                     Json = @"{ ""name"" : ""Wageningen"" }",
                 },
 
@@ -32,6 +33,7 @@ namespace aspnetcoreapp.Models
                 {
                     Name = "Renkum",
                     PublishDate = DateTime.Parse("1984-3-13"),
+                    Country = "Netherlands",
                     Json = @"{ ""name"" : ""Renkum"" }",
                 },
 
@@ -39,7 +41,16 @@ namespace aspnetcoreapp.Models
                 {
                     Name = "Arnhem",
                     PublishDate = DateTime.Parse("1986-2-23"),
+                    Country = "Netherlands",
                     Json = @"{ ""name"" : ""Arnhem"" }",
+                },
+
+                new City
+                {
+                    Name = "Berlin",
+                    PublishDate = DateTime.Parse("1986-2-23"),
+                    Country = "Germany",
+                    Json = @"{ ""name"" : ""Berlin"" }",
                 }
             );
 

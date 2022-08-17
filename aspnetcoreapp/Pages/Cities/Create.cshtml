@@ -2,10 +2,10 @@
 @model aspnetcoreapp.Pages_Cities.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create a city";
 }
 
-<h1>Create</h1>
+<h1>Create a city</h1>
 
 <h4>City</h4>
 <hr />
@@ -22,6 +22,11 @@
                 <label asp-for="City.PublishDate" class="control-label"></label>
                 <input asp-for="City.PublishDate" class="form-control" />
                 <span asp-validation-for="City.PublishDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City.Country" class="control-label"></label>
+                <input asp-for="City.Country" class="form-control" />
+                <span asp-validation-for="City.Country" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="City.Json" class="control-label"></label>

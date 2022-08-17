@@ -20,6 +20,9 @@
                 @Html.DisplayNameFor(model => model.City[0].PublishDate)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.City[0].Country)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.City[0].Json)
             </th>
             <th></th>
@@ -35,8 +38,11 @@
                 @Html.DisplayFor(modelItem => item.PublishDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Json)
+                @Html.DisplayFor(modelItem => item.Country)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Json)
+            </td>            
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
