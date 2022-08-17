@@ -127,3 +127,8 @@ update code then
             INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
             VALUES ('20220817142617_AddCountryToCity', '6.0.8');
 
+## Add annotations to City model
+
+I'm using sqlite locally and it seems it *cannot* update these using something like:
+
+      dotnet ef migrations add AddValidationToCity

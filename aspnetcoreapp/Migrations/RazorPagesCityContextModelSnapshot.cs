@@ -25,6 +25,7 @@ namespace aspnetcoreapp.Migrations
 
                     b.Property<string>("Country")
                         .IsRequired()
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Json")
@@ -33,6 +34,7 @@ namespace aspnetcoreapp.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(60)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("PublishDate")

@@ -10,6 +10,21 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+
+<form>
+    <p>
+        <select asp-for="SearchCountry" asp-items="Model.Countries">
+            <option value="">All</option>
+        </select>
+        <br />
+
+        Search on name <input type="text" asp-for="SearchName" />
+        <input type="submit" value="Go" />
+    </p>
+</form>
+
+
 <table class="table">
     <thead>
         <tr>
