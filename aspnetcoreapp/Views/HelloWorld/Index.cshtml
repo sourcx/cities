@@ -1,0 +1,24 @@
+@model string
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>Hello from our View Template!</p>
+
+<p>
+    I put @@model on string here so we can do stuff with the string as Model.<br>
+    parameter a = @Model
+</p>
+<p>
+    @{
+        if (Model.Contains("o"))
+        {
+            <li><span>the string contains an 'o'</span></li>
+        }
+    }
+
+</p>
+

@@ -1,12 +1,14 @@
+using Microsoft.EntityFrameworkCore;
 using aspnetcoreapp.Data;
 using aspnetcoreapp.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using aspnetcoreapp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
 
 if (builder.Environment.IsDevelopment())
 {
@@ -18,6 +20,8 @@ else
     builder.Services.AddDbContext<RazorPagesCityContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("ProductionCityContext")));
 }
+
+builder.Services.AddScoped<IMyCustomService, MyCustomService>();
 
 var app = builder.Build();
 
@@ -43,5 +47,10 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "Mvc/{controller=HelloWorld}/{action=Index}/{id?}"
+);
 
 app.Run();

@@ -1,0 +1,173 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using aspnetcoreapp.Models;
+using aspnetcoreapp.Data;
+using aspnetcoreapp.Services;
+
+namespace aspnetcoreapp.Controllers
+{
+    public class CitiesController : Controller
+    {
+        private readonly RazorPagesCityContext _context;
+        private readonly IMyCustomService _myCustomService;
+
+        public CitiesController(RazorPagesCityContext context, IMyCustomService myCustomService)
+        {
+            _context = context;
+            _myCustomService = myCustomService;
+        }
+
+        // GET: Cities
+        public async Task<IActionResult> Index(string? a, int? b)
+        {
+            // ViewData can be set in controllers
+            ViewData["hello"] = "world";
+            ViewData["a"] = a;
+            ViewData["b"] = b;
+            ViewData["myCustomService result"] = _myCustomService.DoThings();
+
+            return _context.City != null ?
+                        View(await _context.City.ToListAsync()) :
+                        Problem("Entity set 'RazorPagesCityContext.City'  is null.");
+        }
+
+        // GET: Cities/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.City == null)
+            {
+                return NotFound();
+            }
+
+            var city = await _context.City
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            return View(city);
+        }
+
+        // GET: Cities/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Cities/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Name,PublishDate,Json,Country")] City city)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(city);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(city);
+        }
+
+        // GET: Cities/Edit/5
+        // https://localhost:7154/Mvc/Cities/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.City == null)
+            {
+                return NotFound();
+            }
+
+            var city = await _context.City.FindAsync(id);
+            if (city == null)
+            {
+                return NotFound();
+            }
+            return View(city); // this type should match with the @model directive in Edit.cshtml
+        }
+
+        // POST: Cities/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,PublishDate,Json,Country")] City city)
+        {
+            if (id != city.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(city);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CityExists(city.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(city);
+        }
+
+        // GET: Cities/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null || _context.City == null)
+            {
+                return NotFound();
+            }
+
+            var city = await _context.City
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            return View(city);
+        }
+
+        // POST: Cities/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            if (_context.City == null)
+            {
+                return Problem("Entity set 'RazorPagesCityContext.City'  is null.");
+            }
+            var city = await _context.City.FindAsync(id);
+            if (city != null)
+            {
+                _context.City.Remove(city);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool CityExists(int id)
+        {
+          return (_context.City?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+    }
+}

@@ -1,9 +1,11 @@
-# Readme 
+# Readme
 
-## Tutorial
+Working from https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0#recommended-learning-path
 
-https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0#recommended-learning-path
-https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-6.0&tabs=visual-studio-code
+## Tutorial 1
+
+Get started with Razor Pages (done)
+- https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-6.0&tabs=visual-studio-code
 
 ## Generate City model
 
@@ -38,7 +40,7 @@ https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-s
       Added PageModel : \Pages/Cities\Index.cshtml.cs
       RunTime 00:00:08.70
 
-      
+
       $ dotnet ef migrations add Init
 
       Build started...
@@ -47,7 +49,7 @@ https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/razor-pages-s
             Entity Framework Core 6.0.8 initialized 'RazorPagesCityContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:6.0.8' with options: None
       Done. To undo this action, use 'ef migrations remove'
 
-      
+
       $ dotnet ef database update
 
       Build started...
@@ -132,3 +134,21 @@ update code then
 I'm using sqlite locally and it seems it *cannot* update these using something like:
 
       dotnet ef migrations add AddValidationToCity
+
+## Tutorial 2
+
+Get started with MVC (current)
+- https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-6.0&tabs=visual-studio-code
+
+## Scaffold city page for MVC part
+
+Share the City model from the Razor part.
+
+dotnet-aspnet-codegenerator controller -name CitiesController -m City -dc MvcCityContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries -sqlite
+
+
+## Then
+
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection
+https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/architectural-principles#dependency-inversion
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api

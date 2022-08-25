@@ -19,7 +19,7 @@ namespace aspnetcoreapp.Pages_Cities
             _context = context;
         }
 
-      public City City { get; set; } = default!; 
+        public City City { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
