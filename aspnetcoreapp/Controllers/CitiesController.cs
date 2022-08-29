@@ -23,8 +23,16 @@ namespace aspnetcoreapp.Controllers
         }
 
         // GET: Cities
-        public async Task<IActionResult> Index(string? a, int? b)
+        public async Task<IActionResult> Index(string? a, int? b, string searchString)
         {
+            var cities = from c in _context.City select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                cities = cities.Where(c => c.Name.Contains(searchString));
+                ViewData["searchString"] = searchString;
+            }
+
             // ViewData can be set in controllers
             ViewData["hello"] = "world";
             ViewData["a"] = a;
@@ -32,8 +40,15 @@ namespace aspnetcoreapp.Controllers
             ViewData["myCustomService result"] = _myCustomService.DoThings();
 
             return _context.City != null ?
-                        View(await _context.City.ToListAsync()) :
+                        View(await cities.ToListAsync()) :
                         Problem("Entity set 'RazorPagesCityContext.City'  is null.");
+        }
+
+        // Override posting to this Index endpoint.
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;
         }
 
         // GET: Cities/Details/5
@@ -96,7 +111,7 @@ namespace aspnetcoreapp.Controllers
         // POST: Cities/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost] // POSTING data from form
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,PublishDate,Json,Country")] City city)
         {

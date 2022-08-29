@@ -20,7 +20,6 @@
     </ul>
 </p>
 
-
 <table class="table">
     <thead>
         <tr>
@@ -40,6 +39,20 @@
         </tr>
     </thead>
     <tbody>
+
+        <form asp-controller="Cities" asp-action="Index" method="get">
+            <input type="text" name="searchString">
+            <input type="submit" value="search">
+        </form>
+        <p>
+        @{
+            if (ViewData["searchString"] != null)
+            {
+                <b>Searching on '@ViewData["searchString"]'</b>
+            }
+        }
+        </p>
+
 @foreach (var item in Model)
 {
         <tr>

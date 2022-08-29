@@ -1,4 +1,4 @@
-# Readme
+# Readme - Test project for ASP.NET stuff
 
 Working from https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0#recommended-learning-path
 
@@ -137,7 +137,7 @@ I'm using sqlite locally and it seems it *cannot* update these using something l
 
 ## Tutorial 2
 
-Get started with MVC (current)
+Get started with MVC
 - https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-6.0&tabs=visual-studio-code
 
 ## Scaffold city page for MVC part
@@ -146,9 +146,9 @@ Share the City model from the Razor part.
 
 dotnet-aspnet-codegenerator controller -name CitiesController -m City -dc MvcCityContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries -sqlite
 
-
 ## Then
 
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection
 https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/architectural-principles#dependency-inversion
 https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api
+https://docs.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-vue?view=vs-2022
