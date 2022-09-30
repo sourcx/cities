@@ -40,7 +40,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
 app.UseRouting();
 
@@ -51,5 +50,8 @@ app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "Mvc/{controller=HelloWorld}/{action=Index}/{id?}");
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 app.Run();
