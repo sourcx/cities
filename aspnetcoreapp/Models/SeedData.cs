@@ -1,7 +1,7 @@
+﻿using AspNetCoreApp.Data;
 using Microsoft.EntityFrameworkCore;
-using aspnetcoreapp.Data;
 
-namespace aspnetcoreapp.Models
+namespace AspNetCoreApp.Models
 {
     public static class SeedData
     {
@@ -28,7 +28,6 @@ namespace aspnetcoreapp.Models
                     Country = "Netherlands",
                     Json = @"{ ""name"" : ""Wageningen"" }",
                 },
-
                 new City
                 {
                     Name = "Renkum",
@@ -36,7 +35,6 @@ namespace aspnetcoreapp.Models
                     Country = "Netherlands",
                     Json = @"{ ""name"" : ""Renkum"" }",
                 },
-
                 new City
                 {
                     Name = "Arnhem",
@@ -44,15 +42,13 @@ namespace aspnetcoreapp.Models
                     Country = "Netherlands",
                     Json = @"{ ""name"" : ""Arnhem"" }",
                 },
-
                 new City
                 {
                     Name = "Berlin",
                     PublishDate = DateTime.Parse("1986-2-23"),
                     Country = "Germany",
                     Json = @"{ ""name"" : ""Berlin"" }",
-                }
-            );
+                });
 
             context.SaveChanges();
         }

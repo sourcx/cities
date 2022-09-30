@@ -1,4 +1,4 @@
-namespace aspnetcoreapp.Services
+﻿namespace AspNetCoreApp.Services
 {
     // In dependency injection terminology, a service:
     // - Is typically an object that provides a service to other objects, such as the IMyDependency service.

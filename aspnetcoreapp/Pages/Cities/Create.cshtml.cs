@@ -1,34 +1,29 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AspNetCoreApp.Data;
+using AspNetCoreApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using aspnetcoreapp.Models;
-using aspnetcoreapp.Data;
 
-namespace aspnetcoreapp.Pages_Cities
+namespace AspNetCoreApp.Pages_Cities
 {
-    public class CreateModel : PageModel
+    public class Create : PageModel
     {
         private readonly RazorPagesCityContext _context;
 
-        public CreateModel(RazorPagesCityContext context)
+        public Create(RazorPagesCityContext context)
         {
             _context = context;
         }
+
+        // The City property uses the [BindProperty] attribute to opt-in to model binding.
+        // When the Create form posts the form values, the ASP.NET Core runtime binds the posted values to the City model.
+        [BindProperty]
+        public City City { get; set; } = default!;
 
         public IActionResult OnGet()
         {
             // The Page method creates a PageResult object that renders the Create.cshtml page.
             return Page();
         }
-
-        //The City property uses the [BindProperty] attribute to opt-in to model binding. 
-        // When the Create form posts the form values, the ASP.NET Core runtime binds the posted values to the City model.
-        [BindProperty]
-        public City City { get; set; } = default!;
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()

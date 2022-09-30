@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace aspnetcoreapp.Migrations
+namespace AspNetCoreApp.Migrations
 {
     public partial class Init : Migration
     {
@@ -17,7 +17,7 @@ namespace aspnetcoreapp.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     PublishDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Json = table.Column<string>(type: "TEXT", nullable: false)
+                    Json = table.Column<string>(type: "TEXT", nullable: false),
                 },
                 constraints: table =>
                 {

@@ -1,21 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AspNetCoreApp.Data;
+using AspNetCoreApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using aspnetcoreapp.Models;
-using aspnetcoreapp.Data;
 
-namespace aspnetcoreapp.Pages_Cities
+namespace AspNetCoreApp.Pages_Cities
 {
-    public class EditModel : PageModel
+    public class Edit : PageModel
     {
         private readonly RazorPagesCityContext _context;
 
-        public EditModel(RazorPagesCityContext context)
+        public Edit(RazorPagesCityContext context)
         {
             _context = context;
         }
@@ -30,13 +25,14 @@ namespace aspnetcoreapp.Pages_Cities
                 return NotFound();
             }
 
-            var city =  await _context.City.FirstOrDefaultAsync(m => m.Id == id);
+            var city = await _context.City.FirstOrDefaultAsync(m => m.Id == id);
             if (city == null)
             {
                 return NotFound();
             }
+
             City = city;
-            
+
             return Page();
         }
 

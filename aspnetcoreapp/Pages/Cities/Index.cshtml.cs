@@ -1,19 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AspNetCoreApp.Data;
+using AspNetCoreApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using aspnetcoreapp.Models;
-using aspnetcoreapp.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
-namespace aspnetcoreapp.Pages_Cities
+namespace AspNetCoreApp.Pages_Cities
 {
-    public class IndexModel : PageModel
+    public class Index : PageModel
     {
         private readonly RazorPagesCityContext _context;
+
+        public Index(RazorPagesCityContext context)
+        {
+            _context = context;
+        }
 
         public IList<City> City { get; set; } = default!;
 
@@ -24,11 +25,6 @@ namespace aspnetcoreapp.Pages_Cities
 
         [BindProperty(SupportsGet = true)]
         public string? SearchCountry { get; set; }
-
-        public IndexModel(RazorPagesCityContext context)
-        {
-            _context = context;
-        }
 
         public async Task OnGetAsync()
         {

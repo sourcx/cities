@@ -1,11 +1,11 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace aspnetcoreapp.Models
+namespace AspNetCoreApp.Models
 {
     public class City
     {
         public int Id { get; set; }
-        
+
         [Required]
         [StringLength(60, MinimumLength = 3)]
         public string Name { get; set; } = string.Empty;
@@ -16,7 +16,7 @@ namespace aspnetcoreapp.Models
         public DateTime PublishDate { get; set; }
 
         public string Json { get; set; } = string.Empty;
-        
+
         [Required]
         [StringLength(30)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]

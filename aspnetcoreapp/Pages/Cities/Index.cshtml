@@ -1,5 +1,5 @@
 @page
-@model aspnetcoreapp.Pages_Cities.IndexModel
+@model AspNetCoreApp.Pages_Cities.Index
 
 @{
     ViewData["Title"] = "Cities";
@@ -57,7 +57,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Json)
-            </td>            
+            </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |

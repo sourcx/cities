@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using aspnetcoreapp.Models;
+﻿using Microsoft.EntityFrameworkCore;
 
-    public class MvcCityContext : DbContext
+namespace AspNetCoreApp.Data;
+
+public class MvcCityContext : DbContext
+{
+    public MvcCityContext(DbContextOptions<MvcCityContext> options)
+        : base(options)
     {
-        public MvcCityContext (DbContextOptions<MvcCityContext> options)
-            : base(options)
-        {
-        }
-
-        public DbSet<aspnetcoreapp.Models.City> City { get; set; } = default!;
     }
+
+    public DbSet<AspNetCoreApp.Models.City> City { get; set; } = default!;
+}

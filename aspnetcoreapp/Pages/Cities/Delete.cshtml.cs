@@ -1,26 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AspNetCoreApp.Data;
+using AspNetCoreApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using aspnetcoreapp.Models;
-using aspnetcoreapp.Data;
 
-namespace aspnetcoreapp.Pages_Cities
+namespace AspNetCoreApp.Pages_Cities
 {
-    public class DeleteModel : PageModel
+    public class Delete : PageModel
     {
         private readonly RazorPagesCityContext _context;
 
-        public DeleteModel(RazorPagesCityContext context)
+        public Delete(RazorPagesCityContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-      public City City { get; set; } = default!;
+        public City City { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -35,10 +31,11 @@ namespace aspnetcoreapp.Pages_Cities
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 City = city;
             }
+
             return Page();
         }
 
@@ -48,6 +45,7 @@ namespace aspnetcoreapp.Pages_Cities
             {
                 return NotFound();
             }
+
             var city = await _context.City.FindAsync(id);
 
             if (city != null)

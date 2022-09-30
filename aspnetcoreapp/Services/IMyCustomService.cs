@@ -1,4 +1,4 @@
-namespace aspnetcoreapp.Services
+﻿namespace AspNetCoreApp.Services
 {
     public interface IMyCustomService
     {

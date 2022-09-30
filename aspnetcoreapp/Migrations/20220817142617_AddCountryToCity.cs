@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace aspnetcoreapp.Migrations
+namespace AspNetCoreApp.Migrations
 {
     public partial class AddCountryToCity : Migration
     {
@@ -13,7 +13,7 @@ namespace aspnetcoreapp.Migrations
                 table: "City",
                 type: "TEXT",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: string.Empty);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

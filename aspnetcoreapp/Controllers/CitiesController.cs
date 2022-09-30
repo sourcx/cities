@@ -1,25 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AspNetCoreApp.Data;
+using AspNetCoreApp.Models;
+using AspNetCoreApp.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using aspnetcoreapp.Models;
-using aspnetcoreapp.Data;
-using aspnetcoreapp.Services;
 
-namespace aspnetcoreapp.Controllers
+namespace AspNetCoreApp.Controllers
 {
     public class CitiesController : Controller
     {
         private readonly RazorPagesCityContext _context;
-        private readonly IMyCustomService _myCustomService;
+        private readonly IMyCustomService _customService;
 
-        public CitiesController(RazorPagesCityContext context, IMyCustomService myCustomService)
+        public CitiesController(RazorPagesCityContext context, IMyCustomService customService)
         {
             _context = context;
-            _myCustomService = myCustomService;
+            _customService = customService;
         }
 
         // GET: Cities
@@ -27,7 +22,7 @@ namespace aspnetcoreapp.Controllers
         {
             var cities = from c in _context.City select c;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(searchString))
             {
                 cities = cities.Where(c => c.Name.Contains(searchString));
                 ViewData["searchString"] = searchString;
@@ -37,7 +32,7 @@ namespace aspnetcoreapp.Controllers
             ViewData["hello"] = "world";
             ViewData["a"] = a;
             ViewData["b"] = b;
-            ViewData["myCustomService result"] = _myCustomService.DoThings();
+            ViewData["myCustomService result"] = _customService.DoThings();
 
             return _context.City != null ?
                         View(await cities.ToListAsync()) :
@@ -88,6 +83,7 @@ namespace aspnetcoreapp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(city);
         }
 
@@ -105,6 +101,7 @@ namespace aspnetcoreapp.Controllers
             {
                 return NotFound();
             }
+
             return View(city); // this type should match with the @model directive in Edit.cshtml
         }
 
@@ -138,8 +135,10 @@ namespace aspnetcoreapp.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(city);
         }
 
@@ -162,7 +161,8 @@ namespace aspnetcoreapp.Controllers
         }
 
         // POST: Cities/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -170,6 +170,7 @@ namespace aspnetcoreapp.Controllers
             {
                 return Problem("Entity set 'RazorPagesCityContext.City'  is null.");
             }
+
             var city = await _context.City.FindAsync(id);
             if (city != null)
             {

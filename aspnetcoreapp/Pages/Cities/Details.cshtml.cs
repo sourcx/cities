@@ -1,25 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AspNetCoreApp.Data;
+using AspNetCoreApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using aspnetcoreapp.Models;
-using aspnetcoreapp.Data;
 
-namespace aspnetcoreapp.Pages_Cities
+namespace AspNetCoreApp.Pages_Cities
 {
-    public class DetailsModel : PageModel
+    public class Details : PageModel
     {
         private readonly RazorPagesCityContext _context;
 
-        public DetailsModel(RazorPagesCityContext context)
+        public Details(RazorPagesCityContext context)
         {
             _context = context;
         }
 
-        public City City { get; set; } = default!; 
+        public City City { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,10 +29,11 @@ namespace aspnetcoreapp.Pages_Cities
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 City = city;
             }
+
             return Page();
         }
     }
