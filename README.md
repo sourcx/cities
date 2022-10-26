@@ -152,3 +152,9 @@ https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection
 https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/architectural-principles#dependency-inversion
 https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api
 https://docs.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-vue?view=vs-2022
+
+## Blob storage
+
+Set tags, get metadata and tags.
+Add Azure search index to the blob store.
+
